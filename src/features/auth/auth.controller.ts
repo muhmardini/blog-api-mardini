@@ -5,8 +5,9 @@ import { prisma } from "#lib/prisma.ts";
 import { HttpError } from "#shared/errors/HttpError.ts";
 import { generateToken } from "#shared/jwt/generateToken.ts";
 import bcrypt from "bcrypt";
+import { UserBody } from "#shared/types/Request.type.ts";
 
-const register = async (req: Request, res: Response) => {
+const register = async (req: Request<{},any, UserBody>, res: Response) => {
   const { name, email, password } = req.body;
   exist(name);
   exist(email);
@@ -42,7 +43,7 @@ const register = async (req: Request, res: Response) => {
 
 
 
-const login = async (req: Request, res: Response) => {
+const login = async (req: Request<{}, any, Omit<UserBody, "name">>, res: Response) => {
   const { email, password } = req.body;
   exist(email);
   exist(password);
