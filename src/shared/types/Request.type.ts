@@ -7,3 +7,13 @@ export type UserBody = {
 export type UserParams = {
     id: number
 }
+
+export type PostsParams = {
+    id: number
+}
+
+export type PostBody = {
+    title: string,
+    body: string,
+    imageUrl?: string;
+}
