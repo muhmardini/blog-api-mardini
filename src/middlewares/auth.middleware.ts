@@ -9,7 +9,7 @@ interface TokenPayload extends JwtPayload {
   id: number;
 }
 
-export const userMiddleware = async (
+export const authMiddleware = async (
   req: Request,
   res: Response,
   next: NextFunction,
